@@ -113,6 +113,32 @@
 
 #
     $ pytest
+
+---
+
+# pytest-automock example
+
+#
+    !python
+    # conftest.py
+    import pytest
+
+    @pytest.fixture(autouse=True)
+    def _mocks(automock):
+        with automock("mymod.get_data_from_network", storage="mocks"):
+            yield
+
+#
+    !python
+    # test_logic.py
+    from mymod import logic
+
+    def test_logic():
+        assert logic(7) == 8
+        assert logic(10) == 13
+
+#
+    $ pytest
     ...
     E           AutoMockException: Mock is locked, but Call(...) wanted
     ...
@@ -675,7 +701,7 @@
 - `create_connection` to remote server
 - `passthrough` from client to remote server
 
-**`IO`** → `protocol` → **`generators stack`**
+**`IO`** → `protocol` (**`generators stack`**)
 
 ---
 
@@ -685,7 +711,7 @@
 - `create_connection` to remote server
 - `passthrough` from client to remote server
 
-**`IO`** → `protocol` → **`generators stack`** (`yield`, `yield from`, `return`)
+**`IO`** → `protocol` (**`generators stack`**) (`yield`, `yield from`, `return`)
 
 ---
 
@@ -695,7 +721,7 @@
 - `create_connection` to remote server
 - `passthrough` from client to remote server
 
-**`IO`** → `protocol` → **`generators stack`** (`yield`, `yield from`, `return`)
+**`IO`** → `protocol` (**`generators stack`**) (`yield`, `yield from`, `return`)
 
 # stack reverse
 
@@ -707,7 +733,7 @@
 - `create_connection` to remote server
 - `passthrough` from client to remote server
 
-**`IO`** → `protocol` → **`generators stack`** (`yield`, `yield from`, `return`)
+**`IO`** → `protocol` (**`generators stack`**) (`yield`, `yield from`, `return`)
 
 # stack reverse
 
@@ -724,7 +750,7 @@
 - `create_connection` to remote server
 - `passthrough` from client to remote server
 
-**`IO`** → `protocol` → **`generators stack`** (`yield`, `yield from`, `return`)
+**`IO`** → `protocol` (**`generators stack`**) (`yield`, `yield from`, `return`)
 
 # stack reverse
 
@@ -744,7 +770,7 @@
 - `create_connection` to remote server
 - `passthrough` from client to remote server
 
-**`IO`** → `protocol` → **`generators stack`** (`yield`, `yield from`, `return`)
+**`IO`** → `protocol` (**`generators stack`**) (`yield`, `yield from`, `return`)
 
 - **IO generator primitives** which `yields`'s **IO** commands
 
@@ -756,7 +782,7 @@
 - `create_connection` to remote server
 - `passthrough` from client to remote server
 
-**`IO`** → `protocol` → **`generators stack`** (`yield`, `yield from`, `return`)
+**`IO`** → `protocol` (**`generators stack`**) (`yield`, `yield from`, `return`)
 
 - **IO generator primitives** which `yields`'s **IO** commands
 - **protocol** which `yields from` **IO generator primitives**
@@ -769,7 +795,7 @@
 - `create_connection` to remote server
 - `passthrough` from client to remote server
 
-**`IO`** → `protocol` → **`generators stack`** (`yield`, `yield from`, `return`)
+**`IO`** → `protocol` (**`generators stack`**) (`yield`, `yield from`, `return`)
 
 - **IO generator primitives** which `yields`'s **IO** commands
 - **protocol** which `yields from` **IO generator primitives**

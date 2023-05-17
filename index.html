@@ -1321,7 +1321,7 @@ aside {
             </aside>
             
             <aside class="page_number">
-              1/62
+              1/63
             </aside>
           </footer>
         </div>
@@ -1349,7 +1349,7 @@ aside {
             </aside>
             
             <aside class="page_number">
-              2/62
+              2/63
             </aside>
           </footer>
         </div>
@@ -1385,7 +1385,7 @@ pytest-automock-example/
             </aside>
             
             <aside class="page_number">
-              3/62
+              3/63
             </aside>
           </footer>
         </div>
@@ -1442,7 +1442,7 @@ pytest-automock-example/
             </aside>
             
             <aside class="page_number">
-              4/62
+              4/63
             </aside>
           </footer>
         </div>
@@ -1491,10 +1491,8 @@ pytest-automock-example/
 <span class="normal">4</span>
 <span class="normal">5</span>
 <span class="normal">6</span>
-<span class="normal">7</span>
-<span class="normal">8</span></pre></div></td><td class="code"><div><pre><span></span><span class="c1"># conftest.py</span>
+<span class="normal">7</span></pre></div></td><td class="code"><div><pre><span></span><span class="c1"># conftest.py</span>
 <span class="kn">import</span> <span class="nn">pytest</span>
-<span class="kn">import</span> <span class="nn">mymod</span>
 
 <span class="nd">@pytest</span><span class="o">.</span><span class="n">fixture</span><span class="p">(</span><span class="n">autouse</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 <span class="k">def</span> <span class="nf">_mocks</span><span class="p">(</span><span class="n">automock</span><span class="p">):</span>
@@ -1517,7 +1515,7 @@ pytest-automock-example/
             </aside>
             
             <aside class="page_number">
-              5/62
+              5/63
             </aside>
           </footer>
         </div>
@@ -1538,10 +1536,8 @@ pytest-automock-example/
 <span class="normal">4</span>
 <span class="normal">5</span>
 <span class="normal">6</span>
-<span class="normal">7</span>
-<span class="normal">8</span></pre></div></td><td class="code"><div><pre><span></span><span class="c1"># conftest.py</span>
+<span class="normal">7</span></pre></div></td><td class="code"><div><pre><span></span><span class="c1"># conftest.py</span>
 <span class="kn">import</span> <span class="nn">pytest</span>
-<span class="kn">import</span> <span class="nn">mymod</span>
 
 <span class="nd">@pytest</span><span class="o">.</span><span class="n">fixture</span><span class="p">(</span><span class="n">autouse</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 <span class="k">def</span> <span class="nf">_mocks</span><span class="p">(</span><span class="n">automock</span><span class="p">):</span>
@@ -1578,7 +1574,7 @@ pytest-automock-example/
             </aside>
             
             <aside class="page_number">
-              6/62
+              6/63
             </aside>
           </footer>
         </div>
@@ -1599,10 +1595,70 @@ pytest-automock-example/
 <span class="normal">4</span>
 <span class="normal">5</span>
 <span class="normal">6</span>
-<span class="normal">7</span>
-<span class="normal">8</span></pre></div></td><td class="code"><div><pre><span></span><span class="c1"># conftest.py</span>
+<span class="normal">7</span></pre></div></td><td class="code"><div><pre><span></span><span class="c1"># conftest.py</span>
 <span class="kn">import</span> <span class="nn">pytest</span>
-<span class="kn">import</span> <span class="nn">mymod</span>
+
+<span class="nd">@pytest</span><span class="o">.</span><span class="n">fixture</span><span class="p">(</span><span class="n">autouse</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">_mocks</span><span class="p">(</span><span class="n">automock</span><span class="p">):</span>
+    <span class="k">with</span> <span class="n">automock</span><span class="p">(</span><span class="s2">&quot;mymod.get_data_from_network&quot;</span><span class="p">,</span> <span class="n">storage</span><span class="o">=</span><span class="s2">&quot;mocks&quot;</span><span class="p">):</span>
+        <span class="k">yield</span>
+</pre></div></td></tr></table></div>
+
+<h1></h1>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span></pre></div></td><td class="code"><div><pre><span></span><span class="c1"># test_logic.py</span>
+<span class="kn">from</span> <span class="nn">mymod</span> <span class="kn">import</span> <span class="n">logic</span>
+
+<span class="k">def</span> <span class="nf">test_logic</span><span class="p">():</span>
+    <span class="k">assert</span> <span class="n">logic</span><span class="p">(</span><span class="mi">7</span><span class="p">)</span> <span class="o">==</span> <span class="mi">8</span>
+    <span class="k">assert</span> <span class="n">logic</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span> <span class="o">==</span> <span class="mi">13</span>
+</pre></div></td></tr></table></div>
+
+<h1></h1>
+<pre><code>$ pytest
+</code></pre></section>
+            
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Presenter Notes</h1></header>
+            <section>
+            
+            </section>
+          </div>
+          <footer>
+            
+            <aside class="source">
+              Source: <a href="slides.md">slides.md</a>
+            </aside>
+            
+            <aside class="page_number">
+              7/63
+            </aside>
+          </footer>
+        </div>
+      </div>
+      
+      <!-- slide source: slides.md -->
+      <div class="slide-wrapper">
+        <div class="slide has_code slide-8">
+          <div class="inner">
+            
+            <header><h1>pytest-automock example</h1></header>
+            
+            
+            <section><h1></h1>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span>
+<span class="normal">7</span></pre></div></td><td class="code"><div><pre><span></span><span class="c1"># conftest.py</span>
+<span class="kn">import</span> <span class="nn">pytest</span>
 
 <span class="nd">@pytest</span><span class="o">.</span><span class="n">fixture</span><span class="p">(</span><span class="n">autouse</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 <span class="k">def</span> <span class="nf">_mocks</span><span class="p">(</span><span class="n">automock</span><span class="p">):</span>
@@ -1646,7 +1702,7 @@ E           AutoMockException: Mock is locked, but Call(...) wanted
             </aside>
             
             <aside class="page_number">
-              7/62
+              8/63
             </aside>
           </footer>
         </div>
@@ -1654,7 +1710,7 @@ E           AutoMockException: Mock is locked, but Call(...) wanted
       
       <!-- slide source: slides.md -->
       <div class="slide-wrapper">
-        <div class="slide has_code slide-8">
+        <div class="slide has_code slide-9">
           <div class="inner">
             
             <header><h1>pytest-automock example</h1></header>
@@ -1667,10 +1723,8 @@ E           AutoMockException: Mock is locked, but Call(...) wanted
 <span class="normal">4</span>
 <span class="normal">5</span>
 <span class="normal">6</span>
-<span class="normal">7</span>
-<span class="normal">8</span></pre></div></td><td class="code"><div><pre><span></span><span class="c1"># conftest.py</span>
+<span class="normal">7</span></pre></div></td><td class="code"><div><pre><span></span><span class="c1"># conftest.py</span>
 <span class="kn">import</span> <span class="nn">pytest</span>
-<span class="kn">import</span> <span class="nn">mymod</span>
 
 <span class="nd">@pytest</span><span class="o">.</span><span class="n">fixture</span><span class="p">(</span><span class="n">autouse</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 <span class="k">def</span> <span class="nf">_mocks</span><span class="p">(</span><span class="n">automock</span><span class="p">):</span>
@@ -1714,7 +1768,7 @@ test_logic.py .
             </aside>
             
             <aside class="page_number">
-              8/62
+              9/63
             </aside>
           </footer>
         </div>
@@ -1722,7 +1776,7 @@ test_logic.py .
       
       <!-- slide source: slides.md -->
       <div class="slide-wrapper">
-        <div class="slide has_code slide-9">
+        <div class="slide has_code slide-10">
           <div class="inner">
             
             <header><h1>pytest-automock example</h1></header>
@@ -1735,10 +1789,8 @@ test_logic.py .
 <span class="normal">4</span>
 <span class="normal">5</span>
 <span class="normal">6</span>
-<span class="normal">7</span>
-<span class="normal">8</span></pre></div></td><td class="code"><div><pre><span></span><span class="c1"># conftest.py</span>
+<span class="normal">7</span></pre></div></td><td class="code"><div><pre><span></span><span class="c1"># conftest.py</span>
 <span class="kn">import</span> <span class="nn">pytest</span>
-<span class="kn">import</span> <span class="nn">mymod</span>
 
 <span class="nd">@pytest</span><span class="o">.</span><span class="n">fixture</span><span class="p">(</span><span class="n">autouse</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 <span class="k">def</span> <span class="nf">_mocks</span><span class="p">(</span><span class="n">automock</span><span class="p">):</span>
@@ -1782,7 +1834,7 @@ mocks
             </aside>
             
             <aside class="page_number">
-              9/62
+              10/63
             </aside>
           </footer>
         </div>
@@ -1790,7 +1842,7 @@ mocks
       
       <!-- slide source: slides.md -->
       <div class="slide-wrapper">
-        <div class="slide has_code slide-10">
+        <div class="slide has_code slide-11">
           <div class="inner">
             
             <header><h1>pytest-automock example</h1></header>
@@ -1803,10 +1855,8 @@ mocks
 <span class="normal">4</span>
 <span class="normal">5</span>
 <span class="normal">6</span>
-<span class="normal">7</span>
-<span class="normal">8</span></pre></div></td><td class="code"><div><pre><span></span><span class="c1"># conftest.py</span>
+<span class="normal">7</span></pre></div></td><td class="code"><div><pre><span></span><span class="c1"># conftest.py</span>
 <span class="kn">import</span> <span class="nn">pytest</span>
-<span class="kn">import</span> <span class="nn">mymod</span>
 
 <span class="nd">@pytest</span><span class="o">.</span><span class="n">fixture</span><span class="p">(</span><span class="n">autouse</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 <span class="k">def</span> <span class="nf">_mocks</span><span class="p">(</span><span class="n">automock</span><span class="p">):</span>
@@ -1850,7 +1900,7 @@ test_logic.py .
             </aside>
             
             <aside class="page_number">
-              10/62
+              11/63
             </aside>
           </footer>
         </div>
@@ -1858,7 +1908,7 @@ test_logic.py .
       
       <!-- slide source: slides.md -->
       <div class="slide-wrapper">
-        <div class="slide slide-11">
+        <div class="slide slide-12">
           <div class="inner">
             
             <header><h1>pytest-automock pros and cons</h1></header>
@@ -1878,7 +1928,7 @@ test_logic.py .
             </aside>
             
             <aside class="page_number">
-              11/62
+              12/63
             </aside>
           </footer>
         </div>
@@ -1886,7 +1936,7 @@ test_logic.py .
       
       <!-- slide source: slides.md -->
       <div class="slide-wrapper">
-        <div class="slide slide-12">
+        <div class="slide slide-13">
           <div class="inner">
             
             <header><h1>pytest-automock pros and cons</h1></header>
@@ -1911,7 +1961,7 @@ test_logic.py .
             </aside>
             
             <aside class="page_number">
-              12/62
+              13/63
             </aside>
           </footer>
         </div>
@@ -1919,7 +1969,7 @@ test_logic.py .
       
       <!-- slide source: slides.md -->
       <div class="slide-wrapper">
-        <div class="slide slide-13">
+        <div class="slide slide-14">
           <div class="inner">
             
             <header><h1>pytest-automock pros and cons</h1></header>
@@ -1945,7 +1995,7 @@ test_logic.py .
             </aside>
             
             <aside class="page_number">
-              13/62
+              14/63
             </aside>
           </footer>
         </div>
@@ -1953,7 +2003,7 @@ test_logic.py .
       
       <!-- slide source: slides.md -->
       <div class="slide-wrapper">
-        <div class="slide slide-14">
+        <div class="slide slide-15">
           <div class="inner">
             
             <header><h1>pytest-automock pros and cons</h1></header>
@@ -1980,7 +2030,7 @@ test_logic.py .
             </aside>
             
             <aside class="page_number">
-              14/62
+              15/63
             </aside>
           </footer>
         </div>
@@ -1988,7 +2038,7 @@ test_logic.py .
       
       <!-- slide source: slides.md -->
       <div class="slide-wrapper">
-        <div class="slide slide-15">
+        <div class="slide slide-16">
           <div class="inner">
             
             <header><h1>pytest-automock pros and cons</h1></header>
@@ -2016,7 +2066,7 @@ test_logic.py .
             </aside>
             
             <aside class="page_number">
-              15/62
+              16/63
             </aside>
           </footer>
         </div>
@@ -2024,7 +2074,7 @@ test_logic.py .
       
       <!-- slide source: slides.md -->
       <div class="slide-wrapper">
-        <div class="slide slide-16">
+        <div class="slide slide-17">
           <div class="inner">
             
             <header><h1>pytest-automock pros and cons</h1></header>
@@ -2056,7 +2106,7 @@ test_logic.py .
             </aside>
             
             <aside class="page_number">
-              16/62
+              17/63
             </aside>
           </footer>
         </div>
@@ -2064,7 +2114,7 @@ test_logic.py .
       
       <!-- slide source: slides.md -->
       <div class="slide-wrapper">
-        <div class="slide slide-17">
+        <div class="slide slide-18">
           <div class="inner">
             
             <header><h1>pytest-automock pros and cons</h1></header>
@@ -2097,7 +2147,7 @@ test_logic.py .
             </aside>
             
             <aside class="page_number">
-              17/62
+              18/63
             </aside>
           </footer>
         </div>
@@ -2105,7 +2155,7 @@ test_logic.py .
       
       <!-- slide source: slides.md -->
       <div class="slide-wrapper">
-        <div class="slide slide-18">
+        <div class="slide slide-19">
           <div class="inner">
             
             <header><h1>pytest-automock pros and cons</h1></header>
@@ -2139,7 +2189,7 @@ test_logic.py .
             </aside>
             
             <aside class="page_number">
-              18/62
+              19/63
             </aside>
           </footer>
         </div>
@@ -2147,7 +2197,7 @@ test_logic.py .
       
       <!-- slide source: slides.md -->
       <div class="slide-wrapper">
-        <div class="slide slide-19">
+        <div class="slide slide-20">
           <div class="inner">
             
             <header><h1>pytest-automock pros and cons</h1></header>
@@ -2182,7 +2232,7 @@ test_logic.py .
             </aside>
             
             <aside class="page_number">
-              19/62
+              20/63
             </aside>
           </footer>
         </div>
@@ -2190,7 +2240,7 @@ test_logic.py .
       
       <!-- slide source: slides.md -->
       <div class="slide-wrapper">
-        <div class="slide slide-20">
+        <div class="slide slide-21">
           <div class="inner">
             
             <header><h1>pytest-automock pros and cons</h1></header>
@@ -2226,7 +2276,7 @@ test_logic.py .
             </aside>
             
             <aside class="page_number">
-              20/62
+              21/63
             </aside>
           </footer>
         </div>
@@ -2234,7 +2284,7 @@ test_logic.py .
       
       <!-- slide source: slides.md -->
       <div class="slide-wrapper">
-        <div class="slide slide-21">
+        <div class="slide slide-22">
           <div class="inner">
             
             <header><h1>sans-io</h1></header>
@@ -2254,7 +2304,7 @@ test_logic.py .
             </aside>
             
             <aside class="page_number">
-              21/62
+              22/63
             </aside>
           </footer>
         </div>
@@ -2262,7 +2312,7 @@ test_logic.py .
       
       <!-- slide source: slides.md -->
       <div class="slide-wrapper">
-        <div class="slide slide-22">
+        <div class="slide slide-23">
           <div class="inner">
             
             <header><h1>sans-io</h1></header>
@@ -2284,7 +2334,7 @@ test_logic.py .
             </aside>
             
             <aside class="page_number">
-              22/62
+              23/63
             </aside>
           </footer>
         </div>
@@ -2292,7 +2342,7 @@ test_logic.py .
       
       <!-- slide source: slides.md -->
       <div class="slide-wrapper">
-        <div class="slide slide-23">
+        <div class="slide slide-24">
           <div class="inner">
             
             <header><h1>sans-io</h1></header>
@@ -2314,7 +2364,7 @@ test_logic.py .
             </aside>
             
             <aside class="page_number">
-              23/62
+              24/63
             </aside>
           </footer>
         </div>
@@ -2322,7 +2372,7 @@ test_logic.py .
       
       <!-- slide source: slides.md -->
       <div class="slide-wrapper">
-        <div class="slide slide-24">
+        <div class="slide slide-25">
           <div class="inner">
             
             <header><h1>sans-io</h1></header>
@@ -2345,7 +2395,7 @@ test_logic.py .
             </aside>
             
             <aside class="page_number">
-              24/62
+              25/63
             </aside>
           </footer>
         </div>
@@ -2353,7 +2403,7 @@ test_logic.py .
       
       <!-- slide source: slides.md -->
       <div class="slide-wrapper">
-        <div class="slide slide-25">
+        <div class="slide slide-26">
           <div class="inner">
             
             <header><h1>sans-io</h1></header>
@@ -2376,7 +2426,7 @@ test_logic.py .
             </aside>
             
             <aside class="page_number">
-              25/62
+              26/63
             </aside>
           </footer>
         </div>
@@ -2384,7 +2434,7 @@ test_logic.py .
       
       <!-- slide source: slides.md -->
       <div class="slide-wrapper">
-        <div class="slide slide-26">
+        <div class="slide slide-27">
           <div class="inner">
             
             <header><h1>sans-io</h1></header>
@@ -2407,7 +2457,7 @@ test_logic.py .
             </aside>
             
             <aside class="page_number">
-              26/62
+              27/63
             </aside>
           </footer>
         </div>
@@ -2415,7 +2465,7 @@ test_logic.py .
       
       <!-- slide source: slides.md -->
       <div class="slide-wrapper">
-        <div class="slide slide-27">
+        <div class="slide slide-28">
           <div class="inner">
             
             <header><h1>sans-io</h1></header>
@@ -2438,7 +2488,7 @@ test_logic.py .
             </aside>
             
             <aside class="page_number">
-              27/62
+              28/63
             </aside>
           </footer>
         </div>
@@ -2446,7 +2496,7 @@ test_logic.py .
       
       <!-- slide source: slides.md -->
       <div class="slide-wrapper">
-        <div class="slide slide-28">
+        <div class="slide slide-29">
           <div class="inner">
             
             <header><h1>sans-io</h1></header>
@@ -2472,7 +2522,7 @@ test_logic.py .
             </aside>
             
             <aside class="page_number">
-              28/62
+              29/63
             </aside>
           </footer>
         </div>
@@ -2480,7 +2530,7 @@ test_logic.py .
       
       <!-- slide source: slides.md -->
       <div class="slide-wrapper">
-        <div class="slide slide-29">
+        <div class="slide slide-30">
           <div class="inner">
             
             <header><h1>sans-io</h1></header>
@@ -2507,7 +2557,7 @@ test_logic.py .
             </aside>
             
             <aside class="page_number">
-              29/62
+              30/63
             </aside>
           </footer>
         </div>
@@ -2515,7 +2565,7 @@ test_logic.py .
       
       <!-- slide source: slides.md -->
       <div class="slide-wrapper">
-        <div class="slide slide-30">
+        <div class="slide slide-31">
           <div class="inner">
             
             <header><h1>sans-io</h1></header>
@@ -2543,7 +2593,7 @@ test_logic.py .
             </aside>
             
             <aside class="page_number">
-              30/62
+              31/63
             </aside>
           </footer>
         </div>
@@ -2551,7 +2601,7 @@ test_logic.py .
       
       <!-- slide source: slides.md -->
       <div class="slide-wrapper">
-        <div class="slide slide-31">
+        <div class="slide slide-32">
           <div class="inner">
             
             <header><h1>sans-io</h1></header>
@@ -2580,7 +2630,7 @@ test_logic.py .
             </aside>
             
             <aside class="page_number">
-              31/62
+              32/63
             </aside>
           </footer>
         </div>
@@ -2588,7 +2638,7 @@ test_logic.py .
       
       <!-- slide source: slides.md -->
       <div class="slide-wrapper">
-        <div class="slide slide-32">
+        <div class="slide slide-33">
           <div class="inner">
             
             <header><h1>sans-io</h1></header>
@@ -2618,7 +2668,7 @@ test_logic.py .
             </aside>
             
             <aside class="page_number">
-              32/62
+              33/63
             </aside>
           </footer>
         </div>
@@ -2626,7 +2676,7 @@ test_logic.py .
       
       <!-- slide source: slides.md -->
       <div class="slide-wrapper">
-        <div class="slide slide-33">
+        <div class="slide slide-34">
           <div class="inner">
             
             <header><h1>sans-io</h1></header>
@@ -2657,7 +2707,7 @@ test_logic.py .
             </aside>
             
             <aside class="page_number">
-              33/62
+              34/63
             </aside>
           </footer>
         </div>
@@ -2665,7 +2715,7 @@ test_logic.py .
       
       <!-- slide source: slides.md -->
       <div class="slide-wrapper">
-        <div class="slide slide-34">
+        <div class="slide slide-35">
           <div class="inner">
             
             <header><h1>sans-io</h1></header>
@@ -2696,7 +2746,7 @@ test_logic.py .
             </aside>
             
             <aside class="page_number">
-              34/62
+              35/63
             </aside>
           </footer>
         </div>
@@ -2704,7 +2754,7 @@ test_logic.py .
       
       <!-- slide source: slides.md -->
       <div class="slide-wrapper">
-        <div class="slide slide-35">
+        <div class="slide slide-36">
           <div class="inner">
             
             <header><h1>sans-io</h1></header>
@@ -2735,7 +2785,7 @@ test_logic.py .
             </aside>
             
             <aside class="page_number">
-              35/62
+              36/63
             </aside>
           </footer>
         </div>
@@ -2743,7 +2793,7 @@ test_logic.py .
       
       <!-- slide source: slides.md -->
       <div class="slide-wrapper">
-        <div class="slide slide-36">
+        <div class="slide slide-37">
           <div class="inner">
             
             <header><h1>sans-io</h1></header>
@@ -2774,7 +2824,7 @@ test_logic.py .
             </aside>
             
             <aside class="page_number">
-              36/62
+              37/63
             </aside>
           </footer>
         </div>
@@ -2782,7 +2832,7 @@ test_logic.py .
       
       <!-- slide source: slides.md -->
       <div class="slide-wrapper">
-        <div class="slide slide-37">
+        <div class="slide slide-38">
           <div class="inner">
             
             <header><h1>sans-io</h1></header>
@@ -2814,7 +2864,7 @@ test_logic.py .
             </aside>
             
             <aside class="page_number">
-              37/62
+              38/63
             </aside>
           </footer>
         </div>
@@ -2822,7 +2872,7 @@ test_logic.py .
       
       <!-- slide source: slides.md -->
       <div class="slide-wrapper">
-        <div class="slide slide-38">
+        <div class="slide slide-39">
           <div class="inner">
             
             <header><h1>sans-io</h1></header>
@@ -2855,7 +2905,7 @@ test_logic.py .
             </aside>
             
             <aside class="page_number">
-              38/62
+              39/63
             </aside>
           </footer>
         </div>
@@ -2863,7 +2913,7 @@ test_logic.py .
       
       <!-- slide source: slides.md -->
       <div class="slide-wrapper">
-        <div class="slide slide-39">
+        <div class="slide slide-40">
           <div class="inner">
             
             <header><h1>sans-io</h1></header>
@@ -2897,7 +2947,7 @@ test_logic.py .
             </aside>
             
             <aside class="page_number">
-              39/62
+              40/63
             </aside>
           </footer>
         </div>
@@ -2905,7 +2955,7 @@ test_logic.py .
       
       <!-- slide source: slides.md -->
       <div class="slide-wrapper">
-        <div class="slide slide-40">
+        <div class="slide slide-41">
           <div class="inner">
             
             <header><h1>sans-io</h1></header>
@@ -2940,7 +2990,7 @@ test_logic.py .
             </aside>
             
             <aside class="page_number">
-              40/62
+              41/63
             </aside>
           </footer>
         </div>
@@ -2948,7 +2998,7 @@ test_logic.py .
       
       <!-- slide source: slides.md -->
       <div class="slide-wrapper">
-        <div class="slide slide-41">
+        <div class="slide slide-42">
           <div class="inner">
             
             <header><h1>sans-io</h1></header>
@@ -2984,7 +3034,7 @@ test_logic.py .
             </aside>
             
             <aside class="page_number">
-              41/62
+              42/63
             </aside>
           </footer>
         </div>
@@ -2992,7 +3042,7 @@ test_logic.py .
       
       <!-- slide source: slides.md -->
       <div class="slide-wrapper">
-        <div class="slide slide-42">
+        <div class="slide slide-43">
           <div class="inner">
             
             <header><h1>sans-io</h1></header>
@@ -3029,7 +3079,7 @@ test_logic.py .
             </aside>
             
             <aside class="page_number">
-              42/62
+              43/63
             </aside>
           </footer>
         </div>
@@ -3037,7 +3087,7 @@ test_logic.py .
       
       <!-- slide source: slides.md -->
       <div class="slide-wrapper">
-        <div class="slide slide-43">
+        <div class="slide slide-44">
           <div class="inner">
             
             <header><h1>sans-io socks server example</h1></header>
@@ -3057,7 +3107,7 @@ test_logic.py .
             </aside>
             
             <aside class="page_number">
-              43/62
+              44/63
             </aside>
           </footer>
         </div>
@@ -3065,7 +3115,7 @@ test_logic.py .
       
       <!-- slide source: slides.md -->
       <div class="slide-wrapper">
-        <div class="slide slide-44">
+        <div class="slide slide-45">
           <div class="inner">
             
             <header><h1>sans-io socks server example</h1></header>
@@ -3089,7 +3139,7 @@ test_logic.py .
             </aside>
             
             <aside class="page_number">
-              44/62
+              45/63
             </aside>
           </footer>
         </div>
@@ -3097,7 +3147,7 @@ test_logic.py .
       
       <!-- slide source: slides.md -->
       <div class="slide-wrapper">
-        <div class="slide slide-45">
+        <div class="slide slide-46">
           <div class="inner">
             
             <header><h1>sans-io socks server example</h1></header>
@@ -3122,7 +3172,7 @@ test_logic.py .
             </aside>
             
             <aside class="page_number">
-              45/62
+              46/63
             </aside>
           </footer>
         </div>
@@ -3130,7 +3180,7 @@ test_logic.py .
       
       <!-- slide source: slides.md -->
       <div class="slide-wrapper">
-        <div class="slide slide-46">
+        <div class="slide slide-47">
           <div class="inner">
             
             <header><h1>sans-io socks server example</h1></header>
@@ -3156,7 +3206,7 @@ test_logic.py .
             </aside>
             
             <aside class="page_number">
-              46/62
+              47/63
             </aside>
           </footer>
         </div>
@@ -3164,7 +3214,7 @@ test_logic.py .
       
       <!-- slide source: slides.md -->
       <div class="slide-wrapper">
-        <div class="slide slide-47">
+        <div class="slide slide-48">
           <div class="inner">
             
             <header><h1>sans-io socks server example</h1></header>
@@ -3191,7 +3241,7 @@ test_logic.py .
             </aside>
             
             <aside class="page_number">
-              47/62
+              48/63
             </aside>
           </footer>
         </div>
@@ -3199,7 +3249,7 @@ test_logic.py .
       
       <!-- slide source: slides.md -->
       <div class="slide-wrapper">
-        <div class="slide slide-48">
+        <div class="slide slide-49">
           <div class="inner">
             
             <header><h1>sans-io socks server example</h1></header>
@@ -3227,7 +3277,7 @@ test_logic.py .
             </aside>
             
             <aside class="page_number">
-              48/62
+              49/63
             </aside>
           </footer>
         </div>
@@ -3235,7 +3285,7 @@ test_logic.py .
       
       <!-- slide source: slides.md -->
       <div class="slide-wrapper">
-        <div class="slide slide-49">
+        <div class="slide slide-50">
           <div class="inner">
             
             <header><h1>sans-io socks server example</h1></header>
@@ -3263,7 +3313,7 @@ test_logic.py .
             </aside>
             
             <aside class="page_number">
-              49/62
+              50/63
             </aside>
           </footer>
         </div>
@@ -3271,7 +3321,7 @@ test_logic.py .
       
       <!-- slide source: slides.md -->
       <div class="slide-wrapper">
-        <div class="slide slide-50">
+        <div class="slide slide-51">
           <div class="inner">
             
             <header><h1>sans-io socks server example</h1></header>
@@ -3300,7 +3350,7 @@ test_logic.py .
             </aside>
             
             <aside class="page_number">
-              50/62
+              51/63
             </aside>
           </footer>
         </div>
@@ -3308,7 +3358,7 @@ test_logic.py .
       
       <!-- slide source: slides.md -->
       <div class="slide-wrapper">
-        <div class="slide slide-51">
+        <div class="slide slide-52">
           <div class="inner">
             
             <header><h1>sans-io socks server example</h1></header>
@@ -3338,43 +3388,7 @@ test_logic.py .
             </aside>
             
             <aside class="page_number">
-              51/62
-            </aside>
-          </footer>
-        </div>
-      </div>
-      
-      <!-- slide source: slides.md -->
-      <div class="slide-wrapper">
-        <div class="slide slide-52">
-          <div class="inner">
-            
-            <header><h1>sans-io socks server example</h1></header>
-            
-            
-            <section><ul>
-<li><code>read</code> from client</li>
-<li><code>write</code> to client</li>
-<li><code>create_connection</code> to remote server</li>
-<li><code>passthrough</code> from client to remote server</li>
-</ul>
-<p><strong><code>IO</code></strong> → <code>protocol</code> → <strong><code>generators stack</code></strong></p></section>
-            
-          </div>
-          <div class="presenter_notes">
-            <header><h1>Presenter Notes</h1></header>
-            <section>
-            
-            </section>
-          </div>
-          <footer>
-            
-            <aside class="source">
-              Source: <a href="slides.md">slides.md</a>
-            </aside>
-            
-            <aside class="page_number">
-              52/62
+              52/63
             </aside>
           </footer>
         </div>
@@ -3394,7 +3408,7 @@ test_logic.py .
 <li><code>create_connection</code> to remote server</li>
 <li><code>passthrough</code> from client to remote server</li>
 </ul>
-<p><strong><code>IO</code></strong> → <code>protocol</code> → <strong><code>generators stack</code></strong> (<code>yield</code>, <code>yield from</code>, <code>return</code>)</p></section>
+<p><strong><code>IO</code></strong> → <code>protocol</code> (<strong><code>generators stack</code></strong>)</p></section>
             
           </div>
           <div class="presenter_notes">
@@ -3410,7 +3424,7 @@ test_logic.py .
             </aside>
             
             <aside class="page_number">
-              53/62
+              53/63
             </aside>
           </footer>
         </div>
@@ -3430,7 +3444,43 @@ test_logic.py .
 <li><code>create_connection</code> to remote server</li>
 <li><code>passthrough</code> from client to remote server</li>
 </ul>
-<p><strong><code>IO</code></strong> → <code>protocol</code> → <strong><code>generators stack</code></strong> (<code>yield</code>, <code>yield from</code>, <code>return</code>)</p>
+<p><strong><code>IO</code></strong> → <code>protocol</code> (<strong><code>generators stack</code></strong>) (<code>yield</code>, <code>yield from</code>, <code>return</code>)</p></section>
+            
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Presenter Notes</h1></header>
+            <section>
+            
+            </section>
+          </div>
+          <footer>
+            
+            <aside class="source">
+              Source: <a href="slides.md">slides.md</a>
+            </aside>
+            
+            <aside class="page_number">
+              54/63
+            </aside>
+          </footer>
+        </div>
+      </div>
+      
+      <!-- slide source: slides.md -->
+      <div class="slide-wrapper">
+        <div class="slide slide-55">
+          <div class="inner">
+            
+            <header><h1>sans-io socks server example</h1></header>
+            
+            
+            <section><ul>
+<li><code>read</code> from client</li>
+<li><code>write</code> to client</li>
+<li><code>create_connection</code> to remote server</li>
+<li><code>passthrough</code> from client to remote server</li>
+</ul>
+<p><strong><code>IO</code></strong> → <code>protocol</code> (<strong><code>generators stack</code></strong>) (<code>yield</code>, <code>yield from</code>, <code>return</code>)</p>
 <h1>stack reverse</h1></section>
             
           </div>
@@ -3447,7 +3497,7 @@ test_logic.py .
             </aside>
             
             <aside class="page_number">
-              54/62
+              55/63
             </aside>
           </footer>
         </div>
@@ -3455,7 +3505,7 @@ test_logic.py .
       
       <!-- slide source: slides.md -->
       <div class="slide-wrapper">
-        <div class="slide has_code slide-55">
+        <div class="slide has_code slide-56">
           <div class="inner">
             
             <header><h1>sans-io socks server example</h1></header>
@@ -3467,7 +3517,7 @@ test_logic.py .
 <li><code>create_connection</code> to remote server</li>
 <li><code>passthrough</code> from client to remote server</li>
 </ul>
-<p><strong><code>IO</code></strong> → <code>protocol</code> → <strong><code>generators stack</code></strong> (<code>yield</code>, <code>yield from</code>, <code>return</code>)</p>
+<p><strong><code>IO</code></strong> → <code>protocol</code> (<strong><code>generators stack</code></strong>) (<code>yield</code>, <code>yield from</code>, <code>return</code>)</p>
 <h1>stack reverse</h1>
 <h1></h1>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">1</span>
@@ -3490,7 +3540,7 @@ test_logic.py .
             </aside>
             
             <aside class="page_number">
-              55/62
+              56/63
             </aside>
           </footer>
         </div>
@@ -3498,7 +3548,7 @@ test_logic.py .
       
       <!-- slide source: slides.md -->
       <div class="slide-wrapper">
-        <div class="slide has_code slide-56">
+        <div class="slide has_code slide-57">
           <div class="inner">
             
             <header><h1>sans-io socks server example</h1></header>
@@ -3510,7 +3560,7 @@ test_logic.py .
 <li><code>create_connection</code> to remote server</li>
 <li><code>passthrough</code> from client to remote server</li>
 </ul>
-<p><strong><code>IO</code></strong> → <code>protocol</code> → <strong><code>generators stack</code></strong> (<code>yield</code>, <code>yield from</code>, <code>return</code>)</p>
+<p><strong><code>IO</code></strong> → <code>protocol</code> (<strong><code>generators stack</code></strong>) (<code>yield</code>, <code>yield from</code>, <code>return</code>)</p>
 <h1>stack reverse</h1>
 <h1></h1>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">1</span>
@@ -3539,46 +3589,7 @@ test_logic.py .
             </aside>
             
             <aside class="page_number">
-              56/62
-            </aside>
-          </footer>
-        </div>
-      </div>
-      
-      <!-- slide source: slides.md -->
-      <div class="slide-wrapper">
-        <div class="slide slide-57">
-          <div class="inner">
-            
-            <header><h1>sans-io socks server example</h1></header>
-            
-            
-            <section><ul>
-<li><code>read</code> from client</li>
-<li><code>write</code> to client</li>
-<li><code>create_connection</code> to remote server</li>
-<li><code>passthrough</code> from client to remote server</li>
-</ul>
-<p><strong><code>IO</code></strong> → <code>protocol</code> → <strong><code>generators stack</code></strong> (<code>yield</code>, <code>yield from</code>, <code>return</code>)</p>
-<ul>
-<li><strong>IO generator primitives</strong> which <code>yields</code>'s <strong>IO</strong> commands</li>
-</ul></section>
-            
-          </div>
-          <div class="presenter_notes">
-            <header><h1>Presenter Notes</h1></header>
-            <section>
-            
-            </section>
-          </div>
-          <footer>
-            
-            <aside class="source">
-              Source: <a href="slides.md">slides.md</a>
-            </aside>
-            
-            <aside class="page_number">
-              57/62
+              57/63
             </aside>
           </footer>
         </div>
@@ -3598,10 +3609,9 @@ test_logic.py .
 <li><code>create_connection</code> to remote server</li>
 <li><code>passthrough</code> from client to remote server</li>
 </ul>
-<p><strong><code>IO</code></strong> → <code>protocol</code> → <strong><code>generators stack</code></strong> (<code>yield</code>, <code>yield from</code>, <code>return</code>)</p>
+<p><strong><code>IO</code></strong> → <code>protocol</code> (<strong><code>generators stack</code></strong>) (<code>yield</code>, <code>yield from</code>, <code>return</code>)</p>
 <ul>
 <li><strong>IO generator primitives</strong> which <code>yields</code>'s <strong>IO</strong> commands</li>
-<li><strong>protocol</strong> which <code>yields from</code> <strong>IO generator primitives</strong></li>
 </ul></section>
             
           </div>
@@ -3618,7 +3628,7 @@ test_logic.py .
             </aside>
             
             <aside class="page_number">
-              58/62
+              58/63
             </aside>
           </footer>
         </div>
@@ -3638,7 +3648,47 @@ test_logic.py .
 <li><code>create_connection</code> to remote server</li>
 <li><code>passthrough</code> from client to remote server</li>
 </ul>
-<p><strong><code>IO</code></strong> → <code>protocol</code> → <strong><code>generators stack</code></strong> (<code>yield</code>, <code>yield from</code>, <code>return</code>)</p>
+<p><strong><code>IO</code></strong> → <code>protocol</code> (<strong><code>generators stack</code></strong>) (<code>yield</code>, <code>yield from</code>, <code>return</code>)</p>
+<ul>
+<li><strong>IO generator primitives</strong> which <code>yields</code>'s <strong>IO</strong> commands</li>
+<li><strong>protocol</strong> which <code>yields from</code> <strong>IO generator primitives</strong></li>
+</ul></section>
+            
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Presenter Notes</h1></header>
+            <section>
+            
+            </section>
+          </div>
+          <footer>
+            
+            <aside class="source">
+              Source: <a href="slides.md">slides.md</a>
+            </aside>
+            
+            <aside class="page_number">
+              59/63
+            </aside>
+          </footer>
+        </div>
+      </div>
+      
+      <!-- slide source: slides.md -->
+      <div class="slide-wrapper">
+        <div class="slide slide-60">
+          <div class="inner">
+            
+            <header><h1>sans-io socks server example</h1></header>
+            
+            
+            <section><ul>
+<li><code>read</code> from client</li>
+<li><code>write</code> to client</li>
+<li><code>create_connection</code> to remote server</li>
+<li><code>passthrough</code> from client to remote server</li>
+</ul>
+<p><strong><code>IO</code></strong> → <code>protocol</code> (<strong><code>generators stack</code></strong>) (<code>yield</code>, <code>yield from</code>, <code>return</code>)</p>
 <ul>
 <li><strong>IO generator primitives</strong> which <code>yields</code>'s <strong>IO</strong> commands</li>
 <li><strong>protocol</strong> which <code>yields from</code> <strong>IO generator primitives</strong></li>
@@ -3659,7 +3709,7 @@ test_logic.py .
             </aside>
             
             <aside class="page_number">
-              59/62
+              60/63
             </aside>
           </footer>
         </div>
@@ -3667,7 +3717,7 @@ test_logic.py .
       
       <!-- slide source: slides.md -->
       <div class="slide-wrapper">
-        <div class="slide slide-60">
+        <div class="slide slide-61">
           <div class="inner">
             
             <header><h1>sans-io deep dive</h1></header>
@@ -3691,7 +3741,7 @@ test_logic.py .
             </aside>
             
             <aside class="page_number">
-              60/62
+              61/63
             </aside>
           </footer>
         </div>
@@ -3699,7 +3749,7 @@ test_logic.py .
       
       <!-- slide source: slides.md -->
       <div class="slide-wrapper">
-        <div class="slide slide-61">
+        <div class="slide slide-62">
           <div class="inner">
             
             <header><h1>sans-io deep dive</h1></header>
@@ -3724,7 +3774,7 @@ test_logic.py .
             </aside>
             
             <aside class="page_number">
-              61/62
+              62/63
             </aside>
           </footer>
         </div>
@@ -3732,7 +3782,7 @@ test_logic.py .
       
       <!-- slide source: slides.md -->
       <div class="slide-wrapper">
-        <div class="slide slide-62">
+        <div class="slide slide-63">
           <div class="inner">
             
             <header><h1>Questions?</h1></header>
@@ -3752,7 +3802,7 @@ test_logic.py .
             </aside>
             
             <aside class="page_number">
-              62/62
+              63/63
             </aside>
           </footer>
         </div>
@@ -3827,7 +3877,7 @@ test_logic.py .
       
       
       <tr id="toc-row-11">
-        <th><a href="#slide11">pytest-automock pros and cons</a></th>
+        <th><a href="#slide11">pytest-automock example</a></th>
         <td><a href="#slide11">11</a></td>
       </tr>
       
@@ -3887,7 +3937,7 @@ test_logic.py .
       
       
       <tr id="toc-row-21">
-        <th><a href="#slide21">sans-io</a></th>
+        <th><a href="#slide21">pytest-automock pros and cons</a></th>
         <td><a href="#slide21">21</a></td>
       </tr>
       
@@ -4019,7 +4069,7 @@ test_logic.py .
       
       
       <tr id="toc-row-43">
-        <th><a href="#slide43">sans-io socks server example</a></th>
+        <th><a href="#slide43">sans-io</a></th>
         <td><a href="#slide43">43</a></td>
       </tr>
       
@@ -4121,7 +4171,7 @@ test_logic.py .
       
       
       <tr id="toc-row-60">
-        <th><a href="#slide60">sans-io deep dive</a></th>
+        <th><a href="#slide60">sans-io socks server example</a></th>
         <td><a href="#slide60">60</a></td>
       </tr>
       
@@ -4133,8 +4183,14 @@ test_logic.py .
       
       
       <tr id="toc-row-62">
-        <th><a href="#slide62">Questions?</a></th>
+        <th><a href="#slide62">sans-io deep dive</a></th>
         <td><a href="#slide62">62</a></td>
+      </tr>
+      
+      
+      <tr id="toc-row-63">
+        <th><a href="#slide63">Questions?</a></th>
+        <td><a href="#slide63">63</a></td>
       </tr>
       
       
