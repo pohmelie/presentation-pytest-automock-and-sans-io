@@ -59,7 +59,6 @@
     !python
     # conftest.py
     import pytest
-    import mymod
 
     @pytest.fixture(autouse=True)
     def _mocks(automock):
@@ -74,7 +73,6 @@
     !python
     # conftest.py
     import pytest
-    import mymod
 
     @pytest.fixture(autouse=True)
     def _mocks(automock):
@@ -98,7 +96,6 @@
     !python
     # conftest.py
     import pytest
-    import mymod
 
     @pytest.fixture(autouse=True)
     def _mocks(automock):
@@ -129,7 +126,6 @@
     !python
     # conftest.py
     import pytest
-    import mymod
 
     @pytest.fixture(autouse=True)
     def _mocks(automock):
@@ -160,7 +156,6 @@
     !python
     # conftest.py
     import pytest
-    import mymod
 
     @pytest.fixture(autouse=True)
     def _mocks(automock):
@@ -191,7 +186,6 @@
     !python
     # conftest.py
     import pytest
-    import mymod
 
     @pytest.fixture(autouse=True)
     def _mocks(automock):

@@ -1,5 +1,4 @@
 import pytest
-import mymod
 
 @pytest.fixture(autouse=True)
 def _mocks(automock):
