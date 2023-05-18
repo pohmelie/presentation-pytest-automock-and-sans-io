@@ -11,8 +11,8 @@
 #
     $ tree pytest-automock-example/
     pytest-automock-example/
-    ├── conftest.py
     ├── mymod.py
+    ├── conftest.py
     └── test_logic.py
 
 ---
@@ -723,20 +723,6 @@
 
 **`IO`** → `protocol` (**`generators stack`**) (`yield`, `yield from`, `return`)
 
-# stack reverse
-
----
-
-# sans-io socks server example
-- `read` from client
-- `write` to client
-- `create_connection` to remote server
-- `passthrough` from client to remote server
-
-**`IO`** → `protocol` (**`generators stack`**) (`yield`, `yield from`, `return`)
-
-# stack reverse
-
 #
     !python
     def read(n):
@@ -752,15 +738,44 @@
 
 **`IO`** → `protocol` (**`generators stack`**) (`yield`, `yield from`, `return`)
 
-# stack reverse
+#
+    !python
+    def read(n):
+        return yield Read(n)
+
+    def readline():
+        data = []
+        while True:
+            ch = yield from read(1)
+            if ch == b"\n":
+                return b"".join(data)
+            data.append(ch)
+
+---
+
+# sans-io socks server example
+- `read` from client
+- `write` to client
+- `create_connection` to remote server
+- `passthrough` from client to remote server
+
+**`IO`** → `protocol` (**`generators stack`**) (`yield`, `yield from`, `return`)
 
 #
     !python
     def read(n):
         return yield Read(n)
+
+    def readline():
+        data = []
+        while True:
+            ch = yield from read(1)
+            if ch == b"\n":
+                return b"".join(data)
+            data.append(ch)
 
     def protocol():
-        data = yield from read(1)
+        line = yield from readline()
 
 ---
 
@@ -803,16 +818,41 @@
 
 ---
 
-# sans-io deep dive
+# sans-io socks server example
+- `read` from client
+- `write` to client
+- `create_connection` to remote server
+- `passthrough` from client to remote server
 
-- https://youtu.be/qLpWl5HWu3E
+**`IO`** → `protocol` (**`generators stack`**) (`yield`, `yield from`, `return`)
+
+- **IO generator primitives** which `yields`'s **IO** commands
+- **protocol** which `yields from` **IO generator primitives**
+- **IO** which dispatch commands and send events back to **protocol**
+
+1 hour live coding https://youtu.be/qLpWl5HWu3E
 
 ---
 
-# sans-io deep dive
+# Conclusion
 
-- https://youtu.be/qLpWl5HWu3E
-- https://pohmelie.github.io/presentation-pytest-automock-and-sans-io/#slide1
+---
+
+# Conclusion
+- there is no «silver bullet» 😔
+
+---
+
+# Conclusion
+- there is no «silver bullet» 😔
+- both approaches force you to write code in a certain way to take benefits
+
+---
+
+# Conclusion
+- there is no «silver bullet» 😔
+- both approaches force you to write code in a certain way to take benefits
+- testing/mocking `IO` is hard
 
 ---
 
